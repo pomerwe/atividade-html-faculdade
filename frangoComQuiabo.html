@@ -1,0 +1,81 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title id='title'></title>
+</head>
+
+<body>
+    <h2 id="titleHeader"></h2>
+    <h3>Ingredientes</h3>
+    <ul id="ingredients">
+    </ul>
+    <h3>Porções</h3>
+    <p id="quantity"></p>
+
+    <h3>Tempo de Preparo</h3>
+    <p id="time"></p>
+
+    <h3>Passo a Passo</h3>
+    <ol id="steps">
+
+    </ol>
+</body>
+
+</html>
+<script>
+    insertIntoListComponent = (id, items) => {
+        var component = document.getElementById(id);
+        items.forEach(i => {
+            component.innerHTML += `<li>${i}</li>`;
+        });
+    }
+    var title = "Frango com Quiabo";
+    var quantity = 10;
+    var time = 50;
+
+    var titleComponent = document.getElementById("title")
+    var titleHeaderComponent = document.getElementById("titleHeader")
+    var quantityComponent = document.getElementById("quantity")
+    var timeComponent = document.getElementById("time")
+
+    titleComponent.innerHTML = `Receitas - ${title}`;
+    titleHeaderComponent.innerHTML = title;
+    quantityComponent.innerHTML = `Serve ${quantity} pessoas`;
+    timeComponent.innerHTML = `${time} minutos`;
+
+
+    var ingredients = [
+        "10 sobrecoxas de frango",
+        "200 ml de óleo",
+        "01 folha de louro",
+        "02 cebolas picadas e fritas",
+        "03 tomates sem peles e sementes",
+        "500 ml de caldo de galinha",
+        "cheiro-verde picadinho",
+        "01 kg de quiabos",
+        "03 dentes de alho amassados",
+        "01 colher (sopa) de vinagre",
+        "água e suco de limão",
+        "sal e pimenta a gosto",
+        "03 dentes de alho amassados"
+    ]
+
+    insertIntoListComponent("ingredients", ingredients);
+
+    var steps = [
+        "Limpe e lave as sobrecoxas de frando com água e limão.",
+        "Perfure com um garfo, em ambos os lados e tempere com sal, pimenta e alho amassado.",
+        "Coloque óleo em uma panela grande, deixe aquecer e frite os pedaços de frango, virando de vez em quando para dourar.",
+        "Cozinhe os tomates com o caldo de galinha e reserve.",
+        "Em outra panela, coloque óleo, aqueça e refogue o alho.",
+        "Junte os quiabos, bem limpos, com as pontas cortadas e frite mais um pouco.",
+        "Adicione o vinagre e mexa de vez em quando.",
+        "Adicione no frango a folha de louro, e deixe fritar mais um pouco.",
+        "Frite as cebolas e adicione ao frango.",
+        "Depois de bem fritos, junte o caldo de galinha com os tomates e o cheiro verde picado.",
+        "Os quiabos depois de fritos, devem ser escorridos e colocados em uma travessa."
+    ]
+
+    insertIntoListComponent("steps", steps)
+</script>

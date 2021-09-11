@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title id='title'></title>
+</head>
+
+<body>
+    <h2 id="titleHeader"></h2>
+    <h3>Ingredientes</h3>
+    <ul id="ingredients">
+    </ul>
+    <h3>Porções</h3>
+    <p id="quantity"></p>
+
+    <h3>Tempo de Preparo</h3>
+    <p id="time"></p>
+
+    <h3>Passo a Passo</h3>
+    <ol id="steps">
+
+    </ol>
+</body>
+
+</html>
+<script>
+    insertIntoListComponent = (id, items) => {
+        var component = document.getElementById(id);
+        items.forEach(i => {
+            component.innerHTML += `<li>${i}</li>`;
+        });
+    }
+    var title = "Torresmo";
+    var quantity = 7;
+    var time = 30;
+
+    var titleComponent = document.getElementById("title")
+    var titleHeaderComponent = document.getElementById("titleHeader")
+    var quantityComponent = document.getElementById("quantity")
+    var timeComponent = document.getElementById("time")
+
+    titleComponent.innerHTML = `Receitas - ${title}`;
+    titleHeaderComponent.innerHTML = title;
+    quantityComponent.innerHTML = `Serve ${quantity} pessoas`;
+    timeComponent.innerHTML = `${time} minutos`;
+
+
+    var ingredients = [
+        "2 kg de toucinho",
+        "2 colheres (sopa) de banha",
+        "Sal a gosto"
+    ]
+
+    insertIntoListComponent("ingredients", ingredients);
+
+    var steps = [
+        "Primeiro, retire  toda a pele do toucinho.",
+        "Em seguida, corte em pequenos cubos e polvilhe com um pouco de sal refinado. Reserve.",
+        "Coloque, em uma panela, a banha e leve ao fogo brando. Cuide para que não fique muito quente.",
+        "Acrescente o toucinho cortado e frite lentamente.",
+        "Quando corar, tire com a escumadeira e deixe escorrer em papel absorvente.",
+        "Servir ainda quente."
+    ]
+
+    insertIntoListComponent("steps", steps)
+</script>

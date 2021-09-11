@@ -1,0 +1,73 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title id='title'></title>
+</head>
+
+<body>
+    <h2 id="titleHeader"></h2>
+    <h3>Ingredientes</h3>
+    <ul id="ingredients">
+    </ul>
+    <h3>Porções</h3>
+    <p id="quantity"></p>
+
+    <h3>Tempo de Preparo</h3>
+    <p id="time"></p>
+
+    <h3>Passo a Passo</h3>
+    <ol id="steps">
+
+    </ol>
+</body>
+
+</html>
+<script>
+    insertIntoListComponent = (id, items) => {
+        var component = document.getElementById(id);
+        items.forEach(i => {
+            component.innerHTML += `<li>${i}</li>`;
+        });
+    }
+    var title = "Vaca Atolada";
+    var quantity = 8;
+    var time = 60;
+
+    var titleComponent = document.getElementById("title")
+    var titleHeaderComponent = document.getElementById("titleHeader")
+    var quantityComponent = document.getElementById("quantity")
+    var timeComponent = document.getElementById("time")
+
+    titleComponent.innerHTML = `Receitas - ${title}`;
+    titleHeaderComponent.innerHTML = title;
+    quantityComponent.innerHTML = `Serve ${quantity} pessoas`;
+    timeComponent.innerHTML = `${time} minutos`;
+
+
+    var ingredients = [
+        "2 cebolas picadas",
+        "5 tomates descascados, picados sem sementes",
+        "4 dentes de alho amassados",
+        "1 colher (chá) de salsinha picada",
+        "1 colher (sopa) de vinagre",
+        "3 cebolinhas verdes picadas",
+        "1 cubinho de caldo de carne",
+        "1 kg de costela de vaca",
+        "1 kg de mandioca descascada e cortada em pedaços",
+        "2 colheres (sopa) de óleo"
+    ]
+
+    insertIntoListComponent("ingredients", ingredients);
+
+    var steps = [
+        "Em uma panela, coloque as costelas, a cebola, o alho e o oléo.",
+        "Leve ao fogo e refogue até que dourem.",
+        "Acrescente os tomates, o vinagre, a salsinha, a cebolinha, o cubinho de caldo de carne e água suficiente para cobrir o conteúdo da panela.",
+        "Deixe cozinhar, até que a carne fique macia.",
+        "Então, junte a mandioca e água suficiente para cozinhá-la.",
+        "Servir quente."
+    ]
+
+    insertIntoListComponent("steps", steps)
+</script>

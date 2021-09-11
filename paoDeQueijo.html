@@ -1,0 +1,66 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title id='title'></title>
+</head>
+
+<body>
+    <h2 id="titleHeader"></h2>
+    <h3>Ingredientes</h3>
+    <ul id="ingredients">
+    </ul>
+    <h3>Porções</h3>
+    <p id="quantity"></p>
+
+    <h3>Tempo de Preparo</h3>
+    <p id="time"></p>
+
+    <h3>Passo a Passo</h3>
+    <ol id="steps">
+
+    </ol>
+</body>
+
+</html>
+<script>
+    insertIntoListComponent = (id, items) => {
+        var component = document.getElementById(id);
+        items.forEach(i => {
+            component.innerHTML += `<li>${i}</li>`;
+        });
+    }
+    var title = "Pão de Queijo";
+    var quantity = 15;
+    var time = 50;
+
+    var titleComponent = document.getElementById("title")
+    var titleHeaderComponent = document.getElementById("titleHeader")
+    var quantityComponent = document.getElementById("quantity")
+    var timeComponent = document.getElementById("time")
+
+    titleComponent.innerHTML = `Receitas - ${title}`;
+    titleHeaderComponent.innerHTML = title;
+    quantityComponent.innerHTML = `Serve ${quantity} pessoas`;
+    timeComponent.innerHTML = `${time} minutos`;
+
+
+    var ingredients = [
+        "1 ovo inteiro",
+        "1 colher (café) de sal",
+        "1 xícara (chá) de leite",
+        "1 xícara (chá) de queijo minas meia cura ralado",
+        "1 xícara (chá) de polvilho azedo"
+    ]
+
+    insertIntoListComponent("ingredients", ingredients);
+
+    var steps = [
+        "Em uma vasilha, misture todos os ingredientes, menos o leite.",
+        "Em seguida, vá adicionando o leite aos poucos, até que a massa fique homogênea.",
+        "Modele os pães e coloque-os em forma untada com óleo.",
+        "Levar ao forno pré aquecido por 40 minutos ou até dourar."
+    ]
+
+    insertIntoListComponent("steps", steps)
+</script>

@@ -1,0 +1,69 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title id='title'></title>
+</head>
+
+<body>
+    <h2 id="titleHeader"></h2>
+    <h3>Ingredientes</h3>
+    <ul id="ingredients">
+    </ul>
+    <h3>Porções</h3>
+    <p id="quantity"></p>
+
+    <h3>Tempo de Preparo</h3>
+    <p id="time"></p>
+
+    <h3>Passo a Passo</h3>
+    <ol id="steps">
+
+    </ol>
+</body>
+
+</html>
+<script>
+    insertIntoListComponent = (id, items) => {
+        var component = document.getElementById(id);
+        items.forEach(i => {
+            component.innerHTML += `<li>${i}</li>`;
+        });
+    }
+    var title = "Bolo Cremoso de Fubá";
+    var quantity = 15;
+    var time = 40;
+
+    var titleComponent = document.getElementById("title")
+    var titleHeaderComponent = document.getElementById("titleHeader")
+    var quantityComponent = document.getElementById("quantity")
+    var timeComponent = document.getElementById("time")
+
+    titleComponent.innerHTML = `Receitas - ${title}`;
+    titleHeaderComponent.innerHTML = title;
+    quantityComponent.innerHTML = `Serve ${quantity} pessoas`;
+    timeComponent.innerHTML = `${time} minutos`;
+
+
+    var ingredients = [
+        "02 colheres (sopa) de farinha de trigo",
+        "01 colher (chá) de fermento em pó",
+        "02 colheres (sopa) de manteiga ou margarina",
+        "1/2 lata de leite condensado.",
+        "03 ovos",
+        "03 xícaras (chá) de açúcar",
+        "05 xícaras (chá) de leite",
+        "01 pires de queijo ralado ou coco",
+        "1/2 xícara (chá) de fubá de milho"
+    ]
+
+    insertIntoListComponent("ingredients", ingredients);
+
+    var steps = [
+        "Coloque todos os ingredientes no liquidificador e bata por 5 minutos.",
+        "Em uma forma untada, coloque a mistura e leve ao forno, pré aquecido até ficar bem assado.",
+        "Sirva em seguida."
+    ]
+
+    insertIntoListComponent("steps", steps)
+</script>

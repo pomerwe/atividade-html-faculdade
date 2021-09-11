@@ -1,0 +1,78 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title id='title'></title>
+</head>
+
+<body>
+    <h2 id="titleHeader"></h2>
+    <h3>Ingredientes</h3>
+    <ul id="ingredients">
+    </ul>
+    <h3>Porções</h3>
+    <p id="quantity"></p>
+
+    <h3>Tempo de Preparo</h3>
+    <p id="time"></p>
+
+    <h3>Passo a Passo</h3>
+    <ol id="steps">
+
+    </ol>
+</body>
+
+</html>
+<script>
+    insertIntoListComponent = (id, items) => {
+        var component = document.getElementById(id);
+        items.forEach(i => {
+            component.innerHTML += `<li>${i}</li>`;
+        });
+    }
+
+    var title = "Feijão Tropeiro";
+    var quantity = 15;
+    var time = 60;
+
+    var titleComponent = document.getElementById("title")
+    var titleHeaderComponent = document.getElementById("titleHeader")
+    var quantityComponent = document.getElementById("quantity")
+    var timeComponent = document.getElementById("time")
+
+    titleComponent.innerHTML = `Receitas - ${title}`;
+    titleHeaderComponent.innerHTML = title;
+    quantityComponent.innerHTML = `Serve ${quantity} pessoas`;
+    timeComponent.innerHTML = `${time} minutos`;
+
+    var ingredients = [
+        "02 kg de lombo de porco",
+        "500g de toucinho",
+        "02 kg de feijão de corda",
+        "01 kg de farinha de mandioca torrada",
+        "Cheiro-verde",
+        "Sal a gosto",
+        "Alho amassado",
+        "1 cebola picada",
+        "2 Ovos cozidos"
+    ];
+
+    insertIntoListComponent("ingredients", ingredients);
+
+    var steps = [
+        "Em uma panela, cozinhe o feijão com água e sal.",
+        "Assim que estiver cozido, escorra e reserve.",
+        "Em outra panela, frite o toucinho picado.",
+        "Retire os torresmos, e reserve.",
+        "Corte o lombo de porco em pedaços e tempere com alho e sal.",
+        "Frite a cebola picada na gordura do toucinho, até dourar.",
+        "Coloque um pouco de açúcar e deixe corar.",
+        "Adicione o lombo e frite bem.",
+        "Depois de frita, junte o feijão cozido, o torresmo, o cheiro-verde picado e adicione a farinha de mandioca, mexendo sempre com uma colher de pau, até ficar bem homogênea.",
+        "Pique os ovos cozidos e junte ao feijão.",
+        "Deixe no fogo por mais alguns minutos.",
+        "Sirva com arroz branco."
+    ]
+
+    insertIntoListComponent("steps", steps)
+</script>
