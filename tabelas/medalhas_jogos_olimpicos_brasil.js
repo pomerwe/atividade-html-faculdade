@@ -5,6 +5,40 @@ class TableItem {
         this.colspan = colspan
     }
 }
+
+class TablePreConfiguredItens {
+
+    tableItens = []
+
+    constructor(tableItens) {
+        this.tableItens = tableItens
+        this.itemHasConfiguration.bind(this)
+        this.getConfiguredTableItem.bind(this)
+    }
+
+    itemHasConfiguration = (value) => {
+        let itemHasConfiguration = false
+        this.tableItens.forEach(i => {
+            if (value.toUpperCase().includes(i.value.toUpperCase())) {
+                itemHasConfiguration = true
+                return
+            }
+        })
+        return itemHasConfiguration
+    }
+
+    getConfiguredTableItem = (value) => {
+        let item = undefined
+        this.tableItens.forEach(i => {
+            if (value.toUpperCase().includes(i.value.toUpperCase())) {
+                item = i
+                return
+            }
+        })
+        return item
+    }
+}
+
 createTable = (headers, rows) => {
     let table = document.createElement("table")
     let headerTr = document.createElement("tr")
@@ -56,7 +90,7 @@ parseTableIntoArray = (stringTable) => {
     return rows;
 }
 
-createTableFromStringTable = (stringTable) => {
+createTableFromStringTable = (stringTable, preConfiguredItens = undefined) => {
 
     let headers = []
     let rowArray = []
@@ -66,14 +100,22 @@ createTableFromStringTable = (stringTable) => {
         if (rows.indexOf(row) == 0) {
 
             row.forEach(h => {
-                headers.push(new TableItem(h))
+                if (preConfiguredItens.itemHasConfiguration(h)) {
+                    headers.push(preConfiguredItens.getConfiguredTableItem(h))
+                } else {
+                    headers.push(new TableItem(h))
+                }
             })
             return
         }
 
         var rowItemArray = []
         row.forEach(r => {
-            rowItemArray.push(new TableItem(r))
+            if (preConfiguredItens.itemHasConfiguration(r)) {
+                rowItemArray.push(preConfiguredItens.getConfiguredTableItem(r))
+            } else {
+                rowItemArray.push(new TableItem(r))
+            }
         })
         rowArray.push(rowItemArray)
     })
@@ -299,19 +341,30 @@ var medalhas_modalidade = `╔════════════════�
 ║ TOTAL             ║   30 ║    36 ║     63 ║   129 ║      35 ║
 ╚═══════════════════╩══════╩═══════╩════════╩═══════╩═════════╝`
 
+configuredTableItens = [];
 
-var medalhasTable = createTableFromStringTable(medalhas)
+configuredTableItens.push(new TableItem("Não competiu", 1, 6))
+configuredTableItens.push(new TableItem("Nenhuma", 1, 4))
+configuredTableItens.push(new TableItem("Homens", 1, 4))
+configuredTableItens.push(new TableItem("Mulheres", 1, 4))
+configuredTableItens.push(new TableItem("Modalidade Por Gênero", 2, 1))
+
+tablePreConfiguredItens = new TablePreConfiguredItens(configuredTableItens)
+
+
+var medalhasTable = createTableFromStringTable(medalhas, tablePreConfiguredItens)
 document.getElementById("table-medalhas").appendChild(medalhasTable)
 
+console.log(medalhasTable)
 
-medalhasTable = createTableFromStringTable(medalhas_genero)
+medalhasTable = createTableFromStringTable(medalhas_genero, tablePreConfiguredItens)
 document.getElementById("table-medalhas-genero").appendChild(medalhasTable)
 
-medalhasTable = createTableFromStringTable(medalhas_inverno)
+medalhasTable = createTableFromStringTable(medalhas_inverno, tablePreConfiguredItens)
 document.getElementById("table-medalhas-inverno").appendChild(medalhasTable)
 
-medalhasTable = createTableFromStringTable(medalhas_verao)
+medalhasTable = createTableFromStringTable(medalhas_verao, tablePreConfiguredItens)
 document.getElementById("table-medalhas-verao").appendChild(medalhasTable)
 
-medalhasTable = createTableFromStringTable(medalhas_modalidade)
+medalhasTable = createTableFromStringTable(medalhas_modalidade, tablePreConfiguredItens)
 document.getElementById("table-medalhas-modalidade").appendChild(medalhasTable)
