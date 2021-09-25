@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <title>
+        Cadastro de Pokémon
+    </title>
+    <meta charset="utf-8">
+    <style>
+        .status-input {
+            display: inline-block;
+            width: 300px;
+            margin-right: 5px;
+        }
+        
+        .status-input input {
+            width: 100%;
+        }
+    </style>
+</head>
+
+<body>
+    <form method="POST">
+        <section>
+            <header>
+                <h2>Cadastro de Pokémons</h2>
+            </header>
+        </section>
+
+        <div>
+            <label>Nome do Pokémon:</label>
+            <input name="name" id="name" type="text" placeholder="Digite o nome...">
+        </div>
+
+        <div>
+            <label>Tipo Primário</label>
+            <select class="type-options" name="primary-type" id="primary-type">
+            </select>
+
+            <label>Tipo Secundário</label>
+            <select class="type-options" name="secondary-type" id="secondary-type">
+            </select>
+        </div>
+
+        <div class="status-input">
+            <label>HP:</label>
+            <input name="health-points" id="health-points" type="number" min=1 max=255>
+
+            <label>Velocidade Base:</label>
+            <input name="base-speed" id="base-speed" type="number" min=1 max=255>
+
+            <label>Ataque Base:</label>
+            <input name="base-attack-points" id="base-attack-points" type="number" min=1 max=255>
+        </div>
+
+        <div class="status-input">
+            <label>Defesa Base:</label>
+            <input name="base-defense-points" id="base-defense-points" type="number" min=1 max=255>
+
+            <label>Ataque Especial Base:</label>
+            <input name="base-special-attack-points" id="base-special-attack-points" type="number" min=1 max=255>
+
+            <label>Defesa Base:</label>
+            <input name="base-special-defense-points" id="base-special-defense-points" type="number" min=1 max=255>
+        </div>
+
+        <div>
+            <label>Total:</label>
+            <span id="total"></span>
+        </div>
+
+
+
+        <div>
+            <label>Geração:</label>
+            <input name="generation" id="generation" type="number" min=1 max=7 value=1>
+        </div>
+
+        <div>
+            <label>Lendário:</label>
+            <input type="checkbox" name="legendary" id="legendary">
+        </div>
+
+        <div>
+            <label>Cor:</label>
+            <input name="color" id="color" type="color">
+        </div>
+
+        <div>
+            <label>Altura (m):</label>
+            <input name="height" id="height" type="text" placeholder="Digite a altura...">
+        </div>
+
+        <div>
+            <label>Peso (kg):</label>
+            <input name="weight" id="weight" type="text" placeholder="Digite o peso...">
+        </div>
+
+        <div>
+            <label>Taxa de Captura</label>
+            <input name="catch-rate" id="catch-rate" type="number" min=0 max=255 value=100>
+        </div>
+
+        <button>Enviar</button>
+
+    </form>
+
+    <script src="cadastro_pokemon.js"></script>
+</body>
+
+</html>
