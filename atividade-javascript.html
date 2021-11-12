@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>
+        Calcular equação segundo grau
+    </title>
+    <meta charset="utf-8">
+    <style>
+        .result {
+            display: block;
+            padding: 15px;
+            border: solid 1px rgba(0, 0, 0, 0.096);
+            box-shadow: 2px 3px 15px rgba(0, 0, 0, 0.164);
+            width: 500px;
+        }
+
+        .result span {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Digite os valores de A, B e C da sua equação de segundo grau!</h2>
+    <input id="a" placeholder="a">
+    <input id="b" placeholder="b">
+    <input id="c" placeholder="c">
+    <button onclick="onCalcularClick()">Calcular</button>
+
+    <div class="result">
+        <h3>Resultados</h3>
+        <span id="xLinha"></span>
+        <span id="xDuasLinhas"></span>
+    </div>
+</body>
+
+</html>
+<script>
+    function calcularAPorraToda() {
+        let a = parseFloat(document.getElementById("a").value)
+        let b = parseFloat(document.getElementById("b").value)
+        let c = parseFloat(document.getElementById("c").value)
+
+        let xLinha
+        let xDuasLinhas
+
+        if (b == 0 && c == 0) {
+            alert("Coeficientes b e c não podem ser 0 ao mesmo tempo!")
+            return
+        }
+
+        if (a == 0) {
+            alert("O coeficiente a não pode ser 0!");
+            return
+        }
+
+        if (b == 0) {
+            if (c > 0) {
+                alert("Equação não possui raiz real!")
+                return
+            }
+
+            xLinha = Math.sqrt(-c / a)
+            xDuasLinhas = -xLinha
+            return [xLinha, xDuaslinhas]
+        }
+
+        if (c == 0) {
+            xLinha = 0
+            xDuasLinhas = -b / a
+            return [xLinha, xDuaslinhas]
+        }
+
+        let delta = (b * b) - (4 * a * c);
+
+        if(delta < 0)
+        {
+            alert("Delta menor que 0, equação não possui raizes reais!");
+            return
+        }
+
+        xLinha = (-b + Math.sqrt(delta)) / (2 * a)
+        xDuasLinhas = (-b - Math.sqrt(delta)) / (2 * a)
+        
+        return [xLinha, xDuasLinhas]
+    }
+
+    function onCalcularClick() {
+        let xLinhaSpan = document.getElementById("xLinha")
+        let xDuasLinhasSpan = document.getElementById("xDuasLinhas")
+
+        let result = calcularAPorraToda()
+
+        xLinhaSpan.innerHTML = `x': ${result[0]}`
+        xDuasLinhasSpan.innerHTML = `x": ${result[1]}`
+    }
+</script>
